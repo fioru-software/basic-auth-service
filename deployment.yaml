@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-auth
+  labels:
+    app: basic-auth
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: basic-auth
+  template:
+    metadata:
+      labels:
+        app: basic-auth
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: cloud.google.com/gke-preemptible
+                operator: DoesNotExist
+      containers:
+      - name: apache
+        image: httpd:alpine
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        volumeMounts:
+        - name: basic-auth-secret
+          mountPath: /usr/local/apache2/.htpasswd
+          subPath: .htpasswd
+          readOnly: true
+        - name: basic-auth-config
+          mountPath: /usr/local/apache2/conf/httpd.conf
+          subPath: httpd.conf
+          readOnly: true
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
+      volumes:
+        - name: basic-auth-secret
+          secret:
+            secretName: basic-auth-secret
+        - name: basic-auth-config
+          configMap:
+              name: basic-auth-config
