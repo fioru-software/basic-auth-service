@@ -2,9 +2,24 @@
 
 Protects all our staging sites.
 
+Download `.htpasswd` attachment from [Bitwarden](https://bitwarden.veri.ie) > Collections > Developers > auth-staging.veri.ie
+
 ```sh
 kubectl kustomize
 kubectl apply -k .
+```
+
+Add more usernames and passwords.
+
+```sh
+htpasswd <username> .htpasswd
+```
+
+Update ingress of your application with
+
+```yaml
+annotations:
+    nginx.ingress.kubernetes.io/auth-url: https://auth-staging.veri.ie/
 ```
 
 ```sh
