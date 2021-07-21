@@ -19,7 +19,7 @@ Update ingress of your application with
 
 ```yaml
 annotations:
-    nginx.ingress.kubernetes.io/auth-url: https://auth-staging.veri.ie/
+    nginx.ingress.kubernetes.io/auth-url: https://basic-auth.veri.ie/
 ```
 
 ```sh

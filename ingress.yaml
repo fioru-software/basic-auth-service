@@ -12,7 +12,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "180"
 spec:
   rules:
-  - host: auth-staging.veri.ie
+  - host: basic-auth.veri.ie
     http:
       paths:
       - path: /(.*)
@@ -21,5 +21,5 @@ spec:
           servicePort: 8080
   tls:
   - hosts:
-    - auth-staging.veri.ie
+    - basic-auth.veri.ie
     secretName: wildcard-cert-2021
