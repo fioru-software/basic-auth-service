@@ -2,7 +2,7 @@
 
 Protects all our staging sites.
 
-Download `.htpasswd` attachment from [Bitwarden](https://bitwarden.veri.ie) > Collections > Developers > auth-staging.veri.ie
+Download `.htpasswd` attachment from [Bitwarden](https://bitwarden.veri.ie) > Collections > Developers > basic-auth.veri.ie
 
 ```sh
 kubectl kustomize
