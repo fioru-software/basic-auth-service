@@ -4,7 +4,7 @@ generatorOptions:
 configMapGenerator:
 - name: basic-auth-config
   files:
-  - httpd.conf
+  - default.conf
 
 secretGenerator:
 - name: basic-auth-secret
