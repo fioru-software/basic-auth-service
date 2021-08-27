@@ -7,12 +7,13 @@ Download `.htpasswd` attachment from [Bitwarden](https://bitwarden.veri.ie) > Co
 ```sh
 kubectl kustomize
 kubectl apply -k .
+kubectl rollout restart deployment basic-auth
 ```
 
 Add more usernames and passwords.
 
 ```sh
-htpasswd <username> .htpasswd
+htpasswd .htpasswd <username>
 ```
 
 Update ingress of your application with
