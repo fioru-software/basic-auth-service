@@ -13,7 +13,7 @@ kubectl rollout restart deployment basic-auth
 Add more usernames and passwords.
 
 ```sh
-htpasswd <username> .htpasswd
+htpasswd .htpasswd <username>
 ```
 
 Update ingress of your application with
