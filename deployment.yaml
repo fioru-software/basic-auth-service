@@ -29,7 +29,7 @@ spec:
       containers:
       - name: nginx
         image: nginx:stable
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         securityContext:
           allowPrivilegeEscalation: false
         ports:
@@ -47,10 +47,10 @@ spec:
           readOnly: true
         resources:
           limits:
-            cpu: 300m
-            memory: 256Mi
+            cpu: 0.2
+            memory: 128Mi
           requests:
-            cpu: 150m
+            cpu: 0.2
             memory: 128Mi
       volumes:
         - name: basic-auth-secret
