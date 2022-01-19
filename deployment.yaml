@@ -47,10 +47,10 @@ spec:
           readOnly: true
         resources:
           limits:
-            cpu: 0.2
-            memory: 128Mi
+            cpu: 400m
+            memory: 512Mi
           requests:
-            cpu: 0.2
+            cpu: 200m
             memory: 128Mi
       volumes:
         - name: basic-auth-secret
