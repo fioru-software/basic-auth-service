@@ -25,7 +25,7 @@ spec:
               - key: cloud.google.com/gke-nodepool
                 operator: In
                 values:
-                - private-pool
+                - spot-pool
       containers:
       - name: nginx
         image: nginx:stable
