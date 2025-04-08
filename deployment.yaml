@@ -15,6 +15,11 @@ spec:
       labels:
         app: basic-auth
     spec:
+      tolerations:
+      - key: cloud.google.com/gke-nodepool
+        operator: Equal
+        value: services-pool
+        effect: NoSchedule
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -25,7 +30,7 @@ spec:
               - key: cloud.google.com/gke-nodepool
                 operator: In
                 values:
-                - spot-pool
+                - services-pool
       containers:
       - name: nginx
         image: nginx:stable

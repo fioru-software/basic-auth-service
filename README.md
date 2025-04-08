@@ -2,18 +2,24 @@
 
 Protects all our staging sites.
 
+## Add users
+
+```sh
+docker run -ti -v .:/var/www/html php:8.3-apache bash
+htpasswd -c .htpasswd <username>
+cat .htpasswd
+```
+
+Copy and paste into .htpasswd outside container
+
+## Deployment
+
 Download `.htpasswd` attachment from [Bitwarden](https://bitwarden.veri.ie) > Collections > Developers > basic-auth.veri.ie
 
 ```sh
 kubectl kustomize
 kubectl apply -k .
 kubectl rollout restart deployment basic-auth
-```
-
-Add more usernames and passwords.
-
-```sh
-htpasswd .htpasswd <username>
 ```
 
 Update ingress of your application with
