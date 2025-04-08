@@ -5,7 +5,7 @@ Protects all our staging sites.
 ## Add users
 
 ```sh
-docker run -ti -v .:/var/www/html php:8.3-apache bash
+docker run -ti php:8.3-apache bash
 htpasswd -c .htpasswd <username>
 cat .htpasswd
 ```
